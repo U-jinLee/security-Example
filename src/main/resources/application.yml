@@ -1,4 +1,7 @@
 spring:
+  # 'application-oauth2.yml의 설정값을 사용하기 위한 값 추가'
+  profiles:
+    include: oauth2
 
   h2:
     console:
