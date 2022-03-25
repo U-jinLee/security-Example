@@ -18,6 +18,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     private final UserRepository userRepository;
 
     /*구글로부터 받은 userRequest 데이터에 대한 후처리는 이곳에서 이뤄진다.*/
+    // 함수 종료 시 @AuthenticationPrincipal 어노테이션 생성
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         log.info(String.valueOf(userRequest));
@@ -49,7 +50,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .build();
             userRepository.save(user);
         }
-        //Autentication 객체 안으로 들어가자
+
+        //리턴되는 이 객체는 Autentication 객체 안으로 들어간다.
         return new PrincipalDetails(user, oAuth2User.getAttributes());
     }
 }

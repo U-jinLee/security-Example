@@ -24,6 +24,10 @@ public class PrincipalDetails implements UserDetails, OAuth2User /*Authenticatio
     private User user;
     private Map<String, Object> attributes;
 
+    /**
+     * Constructor를 두개 생성함으로 인해
+     * 하나의 Details객체로 두개의 상황을 처리할 수 있게 만듬
+     * */
     //일반 로그인
     public PrincipalDetails(User user) {
         this.user = user;
