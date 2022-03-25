@@ -1,6 +1,5 @@
 package com.security.example.securityExample.web.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +25,12 @@ public class User {
 
     @Column
     private String role;
+    // ex) google
+    @Column
+    private String provider;
+    // ex) sub=105741854823815602981
+    @Column
+    private String providerId;
 
     @Builder
     public User(String username, String email, String password, String role) {
