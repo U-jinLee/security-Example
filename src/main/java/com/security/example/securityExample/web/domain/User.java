@@ -25,18 +25,30 @@ public class User {
 
     @Column
     private String role;
+
     // ex) google
     @Column
     private String provider;
+
     // ex) sub=105741854823815602981
     @Column
     private String providerId;
 
-    @Builder
-    public User(String username, String email, String password, String role) {
+//    @Builder
+//    public User(String username, String email, String password, String role) {
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//        this.role = role;
+//    }
+
+    @Builder//(builderMethodName = "OAuth2Builder")
+    public User(String username, String email, String password, String role, String provider, String providerId) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 }
