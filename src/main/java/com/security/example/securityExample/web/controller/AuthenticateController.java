@@ -24,8 +24,8 @@ public class AuthenticateController {
 
     @PostMapping("/join")
     public String join(UserDTO userDTO) {
-        log.info("connect"+userDTO.getPassword()+""+userDTO.getEmail()+""+userDTO.getUsername());
-        log.info("encodePw====================>"+bCryptPasswordEncoder.encode(userDTO.getPassword()));
+//        log.info("connect"+userDTO.getPassword()+""+userDTO.getEmail()+""+userDTO.getUsername());
+//        log.info("encodePw====================>"+bCryptPasswordEncoder.encode(userDTO.getPassword()));
 
         userService.join(userDTO);
 
