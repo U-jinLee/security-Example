@@ -9,3 +9,9 @@ spring:
             scope:
               - email
               - profile
+          facebook:
+            client-id: #당신의 클라이언트 ID
+            client-secret: #당신의 클라이언트 ID
+            scope:
+              - email
+              - profile
