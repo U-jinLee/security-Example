@@ -3,6 +3,7 @@ package com.security.example.securityExample.config.oauth;
 import com.security.example.securityExample.config.auth.PrincipalDetails;
 import com.security.example.securityExample.config.oauth.provider.FacebookUserInfo;
 import com.security.example.securityExample.config.oauth.provider.GoogleUserInfo;
+import com.security.example.securityExample.config.oauth.provider.NaverUserInfo;
 import com.security.example.securityExample.config.oauth.provider.OAuth2UserInfo;
 import com.security.example.securityExample.web.domain.User;
 import com.security.example.securityExample.web.domain.UserRepository;
@@ -13,6 +14,8 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -41,6 +44,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         }else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
             log.info("facebook login==============");
             oAuth2UserInfo = new FacebookUserInfo(oAuth2User.getAttributes());
+        }else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
+            log.info("naver login==============");
+            oAuth2UserInfo = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
         }else {
             log.error("지원하지 않는 로그인 방법");
         }
