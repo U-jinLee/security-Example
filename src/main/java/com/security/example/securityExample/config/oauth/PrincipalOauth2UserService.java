@@ -1,10 +1,7 @@
 package com.security.example.securityExample.config.oauth;
 
 import com.security.example.securityExample.config.auth.PrincipalDetails;
-import com.security.example.securityExample.config.oauth.provider.FacebookUserInfo;
-import com.security.example.securityExample.config.oauth.provider.GoogleUserInfo;
-import com.security.example.securityExample.config.oauth.provider.NaverUserInfo;
-import com.security.example.securityExample.config.oauth.provider.OAuth2UserInfo;
+import com.security.example.securityExample.config.oauth.provider.*;
 import com.security.example.securityExample.web.domain.User;
 import com.security.example.securityExample.web.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,12 +44,16 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         }else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
             log.info("naver login==============");
             oAuth2UserInfo = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
+        }else if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
+            log.info("Kakao login=============="+oAuth2User.getAttributes());
+            oAuth2UserInfo = new KakaoUserInfo((Map)oAuth2User.getAttributes());
+
         }else {
             log.error("지원하지 않는 로그인 방법");
         }
         /**/
         String provider = oAuth2UserInfo.getProvider(); //수정됨: userRequest.getClientRegistration().getRegistrationId(); // ex) google
-        String providerId = oAuth2UserInfo.getProviderId(); oAuth2User.getAttribute("sub");
+        String providerId = oAuth2UserInfo.getProviderId(); //oAuth2User.getAttribute("sub");
         String username = provider+"_"+providerId; // ex) google_12342dda...
         String email = oAuth2UserInfo.getEmail(); //수정됨: oAuth2User.getAttribute("email");
         String password = username+"_"+email;
