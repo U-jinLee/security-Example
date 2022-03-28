@@ -4,17 +4,30 @@ spring:
       client:
         registration:
           google:
-            client-id: #당신의 클라이언트 ID
-            client-secret: #당신의 클라이언트 시크릿
+            client-id: #Client_Id
+            client-secret: #Client_secret
             scope:
               - email
               - profile
           facebook:
-            client-id: #당신의 클라이언트 ID
-            client-secret: #당신의 클라이언트 시크릿
+            client-id: #Client_Id
+            client-secret: #Client_secret
             scope:
               - email
               - public_profile
+#          kakao:
+#            client-id: #Client_Id
+#            authorization-grant-type: authorization-code
+#            scope:
+#              - profile_nickname
+#              - account_email
+#            client-name: Kakao
+#        provider:
+#          kakao:
+#            authorization-uri: https://kauth.kakao.com/oauth/authorize
+#            token-uri: https://kauth.kakao.com/oauth/token
+#            user-info-uri: https://kapi.kakao.com/v2/user/me
+#            user-name-attribute: id
 # 왠지는 모르겠지만 잘 안돼요 그래서 properties로 이전
 #          naver:
 #            client-id: #당신의 클라이언트 ID
